@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {},
   "scripts": {
-    "test": "eslint"
+    "test": "eslint js/"
   },
   "engines": {
     "node": "8.11"
