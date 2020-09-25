@@ -47,8 +47,8 @@ window.renderStatistics = function (ctx, names, times) {
 
   ctx.font = `16px PT Mono`;
   ctx.textBaseline = `hanging`;
-  ctx.fillText(`Ура вы победили!`, CLOUD_X + GAP, GAP * 2);
-  ctx.fillText(`Список результатов:`, CLOUD_X + GAP, GAP * 4);
+  ctx.fillText(`Ура вы победили!`, CLOUD_X + GAP * 2, CLOUD_Y + GAP * 2);
+  ctx.fillText(`Список результатов:`, CLOUD_X + GAP * 2, CLOUD_Y + GAP * 4);
 
   let maxTime = getMaxElement(times);
 
@@ -59,9 +59,12 @@ window.renderStatistics = function (ctx, names, times) {
         CLOUD_Y + GAP + TEXT_WIDTH
     );
     ctx.fillStyle = `hsl(237, 100%, ` + Math.floor(20 + (i - 0) * 20) + `%)`;
+    if (names[i] === `Вы`) {
+      ctx.fillStyle = `rgba(255, 0, 0, 1)`;
+    }
     ctx.fillRect(
         CLOUD_X + BAR_GAP + (BAR_GAP + BAR_WIDTH) * i,
-        CLOUD_Y + GAP + TEXT_WIDTH + 25,
+        CLOUD_Y + GAP + TEXT_WIDTH + 25 + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime),
         BAR_WIDTH,
         (BAR_HEIGHT * times[i]) / maxTime
     );
