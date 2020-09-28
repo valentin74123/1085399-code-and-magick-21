@@ -58,7 +58,7 @@ let generateWizard = function (count) {
     });
   }
   return wizards;
-}
+};
 
 let renderWizard = function (wizard) {
   let wizardElement = similarWizardTemplate.cloneNode(true);
