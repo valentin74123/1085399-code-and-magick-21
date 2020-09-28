@@ -46,32 +46,19 @@ let similarListElement = document.querySelector(`.setup-similar-list`);
 let similarWizardTemplate = document.querySelector(`#similar-wizard-template`).
 content.querySelector(`.setup-similar-item`);
 
-let wizards = [
-  {
-    name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ` ` +
-    WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)],
-    coatColor: WIZARD_COAT[Math.floor(Math.random() * WIZARD_COAT.length)],
-    eyesColor: WIZARD_EYES[Math.floor(Math.random() * WIZARD_EYES.length)]
-  },
-  {
-    name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ` ` +
-    WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)],
-    coatColor: WIZARD_COAT[Math.floor(Math.random() * WIZARD_COAT.length)],
-    eyesColor: WIZARD_EYES[Math.floor(Math.random() * WIZARD_EYES.length)]
-  },
-  {
-    name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ` ` +
-    WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)],
-    coatColor: WIZARD_COAT[Math.floor(Math.random() * WIZARD_COAT.length)],
-    eyesColor: WIZARD_EYES[Math.floor(Math.random() * WIZARD_EYES.length)]
-  },
-  {
-    name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ` ` +
-    WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)],
-    coatColor: WIZARD_COAT[Math.floor(Math.random() * WIZARD_COAT.length)],
-    eyesColor: WIZARD_EYES[Math.floor(Math.random() * WIZARD_EYES.length)]
+
+let generateWizard = function (count) {
+  let wizards = [];
+  for (let i = 0; i < count; i++) {
+    wizards.push({
+      name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ` ` +
+      WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)],
+      coatColor: WIZARD_COAT[Math.floor(Math.random() * WIZARD_COAT.length)],
+      eyesColor: WIZARD_EYES[Math.floor(Math.random() * WIZARD_EYES.length)]
+    });
   }
-];
+  return wizards;
+}
 
 let renderWizard = function (wizard) {
   let wizardElement = similarWizardTemplate.cloneNode(true);
@@ -82,6 +69,8 @@ let renderWizard = function (wizard) {
 
   return wizardElement;
 };
+
+let wizards = generateWizard(4);
 
 let fragment = document.createDocumentFragment();
 for (let i = 0; i < wizards.length; i++) {
