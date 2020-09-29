@@ -22,7 +22,7 @@ let WIZARD_SURNAMES = [
   `Ирвинг`
 ];
 
-let WIZARD_COAT = [
+let WIZARD_COATS = [
   `rgb(101, 137, 164)`,
   `rgb(241, 43, 107)`,
   `rgb(146, 100, 161)`,
@@ -39,6 +39,8 @@ let WIZARD_EYES = [
   `green`
 ];
 
+let WIZARDS_COUNT = 4;
+
 let userDialog = document.querySelector(`.setup`);
 userDialog.classList.remove(`hidden`);
 
@@ -53,7 +55,7 @@ let generateWizard = function (count) {
     wizards.push({
       name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ` ` +
       WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)],
-      coatColor: WIZARD_COAT[Math.floor(Math.random() * WIZARD_COAT.length)],
+      coatColor: WIZARD_COATS[Math.floor(Math.random() * WIZARD_COATS.length)],
       eyesColor: WIZARD_EYES[Math.floor(Math.random() * WIZARD_EYES.length)]
     });
   }
@@ -70,7 +72,7 @@ let renderWizard = function (wizard) {
   return wizardElement;
 };
 
-let wizards = generateWizard(4);
+let wizards = generateWizard(WIZARDS_COUNT);
 
 let fragment = document.createDocumentFragment();
 for (let i = 0; i < wizards.length; i++) {
