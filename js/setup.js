@@ -118,23 +118,38 @@ let coatWizard = setupWizard.querySelector(`.wizard-coat`);
 let eyesWizard = setupWizard.querySelector(`.wizard-eyes`);
 let fireball = document.querySelector(`.setup-fireball-wrap`);
 
-/* let rgbToHex = function () {
+//  RGB to HEX
 
-} */
+function getHexRGBColor(color) {
+  color = color.replace(/\s/g, ``);
+  let aRGB = color.match(/^rgb\((\d{1,3}[%]?),(\d{1,3}[%]?),(\d{1,3}[%]?)\)$/i);
 
-let chengeColors = function (obj, arr, styleName) {
+  if (aRGB) {
+    color = ``;
+    for (let i = 1; i <= 3; i++) {
+      color += Math.round((aRGB[i][aRGB[i].length - 1] === `%` ? 2.55 : 1)
+      * parseInt((aRGB[i]), 10)).toString(16).replace(/^(.)$/, `0$1`);
+    }
+  } else {
+    color = color.replace(/^#?([\da-f])([\da-f])([\da-f])$/i, `$1$1$2$2$3$3`);
+  }
+  return color;
+}
+
+let chengeColors = function (obj, arr, styleName, nameInput) {
   obj.addEventListener(`click`, function () {
     obj.style[styleName] = arr[Math.floor(Math.random() * arr.length)];
-    let addInput = obj.classList[0].split(`-`)[1] + `-color`;
-
-
-    document.getElementsByName(addInput)[0].value = obj.style[styleName];
+    document.getElementsByName(nameInput)[0].value = obj.style[styleName];
   });
 };
 
-chengeColors(coatWizard, WIZARD_COATS, `fill`);
-chengeColors(eyesWizard, WIZARD_EYES, `fill`);
-chengeColors(fireball, WIZARD_FIREBALLS, `backgroundColor`);
+chengeColors(coatWizard, WIZARD_COATS, `fill`, `coat-color`);
+chengeColors(eyesWizard, WIZARD_EYES, `fill`, `eyes-color`);
+
+fireball.addEventListener(`click`, function () {
+  fireball.style.backgroundColor = WIZARD_FIREBALLS[Math.floor(Math.random() * WIZARD_FIREBALLS.length)];
+  document.getElementsByName(`fireball-color`)[0].value = `#` + getHexRGBColor(fireball.style.backgroundColor);
+});
 
 
 let similarListElement = document.querySelector(`.setup-similar-list`);
