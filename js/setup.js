@@ -80,14 +80,19 @@
     return wizardElement;
   };
 
+  let randomInteger = function (min, max) {
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
+  };
 
   let MAX_SIMILAR_WIZARD_COUNT = 4;
 
   let successHandler = function (wizards) {
+
     let fragment = document.createDocumentFragment();
 
     for (let i = 0; i < MAX_SIMILAR_WIZARD_COUNT; i++) {
-      fragment.appendChild(renderWizard(wizards[i]));
+      fragment.appendChild(renderWizard(wizards[randomInteger(0, wizards.length)]));
     }
     similarListElement.appendChild(fragment);
 
