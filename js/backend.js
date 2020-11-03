@@ -1,6 +1,10 @@
 'use strict';
 
 (function () {
+  const URL_LOAD = `https://21.javascript.pages.academy/code-and-magick/data`;
+
+  const URL_FORM = `https://21.javascript.pages.academy/code-and-magick`;
+
   let StatusCode = {
     OK: 200
   };
@@ -8,7 +12,7 @@
 
   window.backend = {
     load(onLoad, onError) {
-      let URL = `https://21.javascript.pages.academy/code-and-magick/data`;
+
       let xhr = new XMLHttpRequest();
       xhr.responseType = `json`;
 
@@ -28,13 +32,13 @@
 
       xhr.timeout = TIMEOUT_IN_MS;
 
-      xhr.open(`GET`, URL);
+      xhr.open(`GET`, URL_LOAD);
       xhr.send();
     },
 
 
     save(data, onLoad, onError) {
-      let URL = `https://21.javascript.pages.academy/code-and-magick`;
+
       let xhr = new XMLHttpRequest();
       xhr.responseType = `json`;
 
@@ -46,7 +50,7 @@
         }
       });
 
-      xhr.open(`POST`, URL);
+      xhr.open(`POST`, URL_FORM);
       xhr.send(data);
     }
   };

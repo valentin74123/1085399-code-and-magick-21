@@ -1,18 +1,18 @@
 'use strict';
 
-let CLOUD_WIDTH = 420;
-let CLOUD_HEIGHT = 270;
+const CLOUD_WIDTH = 420;
+const CLOUD_HEIGHT = 270;
 
-let CLOUD_X = 100;
-let CLOUD_Y = 10;
+const CLOUD_X = 100;
+const CLOUD_Y = 10;
 
-let GAP = 10;
+const GAP = 10;
 
-let BAR_GAP = 50;
-let TEXT_WIDTH = 50;
-let BAR_WIDTH = 40;
+const BAR_GAP = 50;
+const TEXT_WIDTH = 50;
+const BAR_WIDTH = 40;
 
-let BAR_HEIGHT = 150;
+const BAR_HEIGHT = 150;
 
 let renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;

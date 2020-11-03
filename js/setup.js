@@ -2,7 +2,7 @@
 (function () {
 
 
-  let WIZARD_COATS = [
+  const WIZARD_COATS = [
     `rgb(101, 137, 164)`,
     `rgb(241, 43, 107)`,
     `rgb(146, 100, 161)`,
@@ -11,7 +11,7 @@
     `rgb(0, 0, 0)`
   ];
 
-  let WIZARD_EYES = [
+  const WIZARD_EYES = [
     `black`,
     `red`,
     `blue`,
@@ -19,7 +19,7 @@
     `green`
   ];
 
-  let WIZARD_FIREBALLS = [
+  const WIZARD_FIREBALLS = [
     `#ee4830`,
     `#30a8ee`,
     `#5ce6c0`,
@@ -27,8 +27,8 @@
     `#e6e848`
   ];
 
-  let MIN_NAME_LENGTH = 2;
-  let MAX_NAME_LENGTH = 25;
+  const MIN_NAME_LENGTH = 2;
+  const MAX_NAME_LENGTH = 25;
 
 
   let userDialog = document.querySelector(`.setup`);
