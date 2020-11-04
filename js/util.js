@@ -2,12 +2,12 @@
 
 (function () {
   window.util = {
-    isEscEvent: function (evt, action) {
+    isEscEvent(evt, action) {
       if (evt.key === `Escape`) {
         action();
       }
     },
-    isEnterEvent: function (evt, action) {
+    isEnterEvent(evt, action) {
       if (evt.key === `Enter`) {
         action();
       }
