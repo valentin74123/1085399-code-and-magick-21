@@ -2,24 +2,7 @@
 (function () {
 
 
-  const WIZARD_COATS = [
-    `rgb(101, 137, 164)`,
-    `rgb(241, 43, 107)`,
-    `rgb(146, 100, 161)`,
-    `rgb(56, 159, 117)`,
-    `rgb(215, 210, 55)`,
-    `rgb(0, 0, 0)`
-  ];
-
-  const WIZARD_EYES = [
-    `black`,
-    `red`,
-    `blue`,
-    `yellow`,
-    `green`
-  ];
-
-  const WIZARD_FIREBALLS = [
+  const FIREBALLS_COLORS = [
     `#ee4830`,
     `#30a8ee`,
     `#5ce6c0`,
@@ -53,72 +36,24 @@
   });
 
 
-  (function () {
-    let setupWizard = document.querySelector(`.setup-wizard`);
-    let coatWizard = setupWizard.querySelector(`.wizard-coat`);
-    let eyesWizard = setupWizard.querySelector(`.wizard-eyes`);
-    let fireball = document.querySelector(`.setup-fireball-wrap`);
+  //   let setupWizard = document.querySelector(`.setup-wizard`);
+  //   let coatWizard = setupWizard.querySelector(`.wizard-coat`);
+  //   let eyesWizard = setupWizard.querySelector(`.wizard-eyes`);
+  //
 
-    window.chengeColors(coatWizard, WIZARD_COATS, `fill`, `coat-color`);
-    window.chengeColors(eyesWizard, WIZARD_EYES, `fill`, `eyes-color`);
-    window.chengeFireballColors(fireball, WIZARD_FIREBALLS);
-  })();
+  //   window.chengeColors(coatWizard, WIZARD_COATS, `fill`, `coat-color`);
+  //   window.chengeColors(eyesWizard, WIZARD_EYES, `fill`, `eyes-color`);
 
 
-  let similarListElement = document.querySelector(`.setup-similar-list`);
-  let similarWizardTemplate = document.querySelector(`#similar-wizard-template`).
-  content.querySelector(`.setup-similar-item`);
-
-
-  let renderWizard = function (wizard) {
-    let wizardElement = similarWizardTemplate.cloneNode(true);
-
-    wizardElement.querySelector(`.setup-similar-label`).textContent = wizard.name;
-    wizardElement.querySelector(`.wizard-coat`).style.fill = wizard.colorCoat;
-    wizardElement.querySelector(`.wizard-eyes`).style.fill = wizard.colorEyes;
-
-    return wizardElement;
-  };
-
-  let randomInteger = function (min, max) {
-    let rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
-  };
-
-  let MAX_SIMILAR_WIZARD_COUNT = 4;
-
-  let successHandler = function (wizards) {
-
-    let fragment = document.createDocumentFragment();
-
-    for (let i = 0; i < MAX_SIMILAR_WIZARD_COUNT; i++) {
-      fragment.appendChild(renderWizard(wizards[randomInteger(0, wizards.length)]));
-    }
-    similarListElement.appendChild(fragment);
-
-    userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
-  };
-
-  let errorHandler = function (errorMessage) {
-    let node = document.createElement(`div`);
-    node.style = `z-index: 100; margin: 0 auto; text-align: center; background-color: red;`;
-    node.style.position = `absolute`;
-    node.style.left = 0;
-    node.style.right = 0;
-    node.style.fontSize = `30px`;
-
-    node.textContent = errorMessage;
-    document.body.insertAdjacentElement(`afterbegin`, node);
-  };
-
-  window.backend.load(successHandler, errorHandler);
+  let fireball = document.querySelector(`.setup-fireball-wrap`);
+  window.chengeFireballColors(fireball, FIREBALLS_COLORS);
 
 
   let form = userDialog.querySelector(`.setup-wizard-form`);
   let submitHandler = function (evt) {
     window.backend.save(new FormData(form), function () {
       userDialog.classList.add(`hidden`);
-    }, errorHandler);
+    }, window.util.createErrorMessage);
     evt.preventDefault();
   };
   form.addEventListener(`submit`, submitHandler);
