@@ -49,6 +49,16 @@
     window.debounce(updateWizards);
   });
 
+  // window.wizard.setEyesChangeHandler = window.debounce(function (color) {
+  //   eyesColor = color;
+  //   updateWizards();
+  // });
+
+  // window.wizard.setCoatChangeHandler = window.debounce(function (color) {
+  //   coatColor = color;
+  //   updateWizards();
+  // });
+
 
   const successHandler = function (data) {
     wizards = data;
