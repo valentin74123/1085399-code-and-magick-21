@@ -54,6 +54,7 @@
   //   updateWizards();
   // });
 
+
   // window.wizard.setCoatChangeHandler = window.debounce(function (color) {
   //   coatColor = color;
   //   updateWizards();
